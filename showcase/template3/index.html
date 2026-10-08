@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sora Studio is a minimalist creative practice specializing in visual brand design, architectural identity, and spatial-digital direction.">
+    <meta name="keywords" content="Sora Studio, Creative Direction, Brand Design, Minimalist Design, Spatial Identity, Brand System, Typographic Design">
+    <title>Sora Studio | Minimalist Creative Direction</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://cymatichub.xyz/template/template3/#organization",
+          "name": "Sora Studio",
+          "url": "https://cymatichub.xyz/template/template3",
+          "logo": "https://cymatichub.xyz/media/photo1.png",
+          "description": "Minimalist creative practice dedicated to spatial planning, typographic systems, and architectural brand identity."
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://cymatichub.xyz/template/template3/#website",
+          "name": "Sora Studio | Minimalist Creative Practice",
+          "url": "https://cymatichub.xyz/template/template3",
+          "description": "Crafting beautiful spaces, digital silence, and high-fidelity layouts for thoughtful, modern brands."
+        }
+      ]
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;450;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Syne', 'sans-serif'],
+                    },
+                    colors: {
+                        sora: {
+                            bg: '#FAF9F6', // Warm Alabaster White
+                            dark: '#0F0F10', // Deep Charcoal Noir
+                            gray: '#EBEAE5',
+                            muted: '#6E6D6A'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .page-view {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .page-view.active {
+            display: block;
+            opacity: 1;
+        }
+        .hover-img-zoom:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-sora-bg text-sora-dark antialiased font-sans flex flex-col min-h-screen">
+
+    <header class="fixed top-0 left-0 w-full z-50 bg-sora-bg/85 backdrop-blur-md border-b border-sora-gray">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 h-24 grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center gap-4">
+            <div class="flex items-center justify-start overflow-hidden">
+                <a href="#" onclick="navigateTo('home')" class="flex items-center gap-2 group shrink-0">
+                    <span class="font-display font-bold text-2xl tracking-tight text-sora-dark">SORA<span class="font-normal text-sora-muted">.</span></span>
+                </a>
+            </div>
+            
+            <nav class="hidden md:flex items-center justify-center gap-8 lg:gap-12">
+                <button onclick="navigateTo('home')" aria-label="Navigate to Home" class="nav-link text-sora-muted hover:text-sora-dark transition-colors text-xs font-semibold uppercase tracking-widest whitespace-nowrap" id="nav-home">Home</button>
+                <button onclick="navigateTo('work')" aria-label="Navigate to Works" class="nav-link text-sora-muted hover:text-sora-dark transition-colors text-xs font-semibold uppercase tracking-widest whitespace-nowrap" id="nav-work">Work</button>
+                <button onclick="navigateTo('manifesto')" aria-label="Navigate to Manifesto" class="nav-link text-sora-muted hover:text-sora-dark transition-colors text-xs font-semibold uppercase tracking-widest whitespace-nowrap" id="nav-manifesto">Manifesto</button>
+                <button onclick="navigateTo('contact')" aria-label="Navigate to Contact" class="nav-link text-sora-muted hover:text-sora-dark transition-colors text-xs font-semibold uppercase tracking-widest whitespace-nowrap" id="nav-contact">Contact</button>
+            </nav>
+
+            <div class="flex items-center justify-end gap-2 sm:gap-4">
+                <button onclick="navigateTo('contact')" aria-label="Start Project with Sora Studio" class="hidden sm:inline-flex items-center justify-center px-4 lg:px-6 py-2.5 text-[10px] lg:text-xs font-bold uppercase tracking-widest text-white bg-sora-dark hover:bg-sora-muted transition-all duration-300 rounded-none whitespace-nowrap">
+                    Start Project
+                </button>
+                <button onclick="toggleMobileMenu()" aria-label="Toggle Mobile Menu" class="md:hidden w-10 h-10 flex items-center justify-center text-sora-dark focus:outline-none">
+                    <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-sora-bg border-b border-sora-gray px-6 py-8 space-y-6 shadow-xl">
+            <button onclick="navigateTo('home'); toggleMobileMenu();" aria-label="Go to Home" class="block w-full text-left py-2 font-display text-2xl font-bold text-sora-dark uppercase">Home</button>
+            <button onclick="navigateTo('work'); toggleMobileMenu();" aria-label="Go to Work" class="block w-full text-left py-2 font-display text-2xl font-bold text-sora-dark uppercase">Work</button>
+            <button onclick="navigateTo('manifesto'); toggleMobileMenu();" aria-label="Go to Manifesto" class="block w-full text-left py-2 font-display text-2xl font-bold text-sora-dark uppercase">Manifesto</button>
+            <button onclick="navigateTo('contact'); toggleMobileMenu();" aria-label="Go to Contact" class="block w-full text-left py-2 font-display text-2xl font-bold text-sora-dark uppercase">Contact</button>
+            <button onclick="navigateTo('contact'); toggleMobileMenu();" aria-label="Start New Project" class="w-full text-center py-4 text-xs font-bold uppercase tracking-widest text-white bg-sora-dark rounded-none">Start Project</button>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-24">
+
+        <section id="page-home" class="page-view active">
+            <div class="py-16 md:py-28 max-w-7xl mx-auto px-6 md:px-12">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-8 space-y-8 text-left">
+                        <span class="text-xs uppercase tracking-widest font-semibold text-sora-muted block">Studio Portfolio 2026</span>
+                        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-display font-bold leading-[1.05] tracking-tight text-sora-dark">
+                            Crafting spaces <br>& digital silence<span class="text-sora-muted">.</span>
+                        </h1>
+                        <p class="text-sora-muted text-lg sm:text-xl font-light leading-relaxed max-w-2xl">
+                            A creative practice dedicated to building functional layouts, clean structural hierarchies, and architectural identity for modern, thoughtful brands.
+                        </p>
+                        <div class="flex flex-wrap gap-6 pt-4">
+                            <button onclick="navigateTo('work')" class="px-8 py-4 bg-sora-dark hover:bg-sora-muted text-white font-bold text-xs uppercase tracking-widest transition-all">
+                                View Portfolio
+                            </button>
+                            <button onclick="navigateTo('manifesto')" class="px-8 py-4 border border-sora-dark hover:bg-sora-dark hover:text-white text-sora-dark font-bold text-xs uppercase tracking-widest transition-all">
+                                Our Philosophy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="px-6 md:px-12 max-w-7xl mx-auto pb-24">
+                <div class="h-[450px] md:h-[600px] w-full overflow-hidden border border-sora-gray">
+                    <img src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=1200&q=80" alt="Minimalist Space Study" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out">
+                </div>
+            </div>
+        </section>
+
+        <section id="page-work" class="page-view">
+            <div class="py-16 max-w-7xl mx-auto px-6 md:px-12">
+                <div class="text-left mb-16 space-y-4">
+                    <span class="text-xs uppercase tracking-widest font-semibold text-sora-muted">Selected Works</span>
+                    <h2 class="text-3xl sm:text-5xl font-display font-bold text-sora-dark">Selected Spatial & Digital Studies</h2>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-12 lg:gap-16">
+                    <article class="space-y-4 hover-img-zoom cursor-pointer" onclick="navigateTo('contact')">
+                        <div class="aspect-[4/3] w-full overflow-hidden border border-sora-gray">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Architectural Framing" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-transform duration-700 ease-out">
+                        </div>
+                        <div class="flex justify-between items-baseline pt-2">
+                            <h3 class="text-xl font-display font-bold text-sora-dark">I. Frame & Void Study</h3>
+                            <span class="text-xs text-sora-muted uppercase tracking-widest">Aesthetic Direction</span>
+                        </div>
+                    </article>
+
+                    <article class="space-y-4 hover-img-zoom cursor-pointer" onclick="navigateTo('contact')">
+                        <div class="aspect-[4/3] w-full overflow-hidden border border-sora-gray">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Branding Layout" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-transform duration-700 ease-out">
+                        </div>
+                        <div class="flex justify-between items-baseline pt-2">
+                            <h3 class="text-xl font-display font-bold text-sora-dark">II. Brutalist Structures</h3>
+                            <span class="text-xs text-sora-muted uppercase tracking-widest">Brand System</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-manifesto" class="page-view">
+            <div class="py-16 max-w-7xl mx-auto px-6 md:px-12">
+                <div class="grid lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-8 space-y-8 text-left">
+                        <span class="text-xs uppercase tracking-widest font-semibold text-sora-muted">Our Manifesto</span>
+                        <h2 class="text-3xl sm:text-5xl font-display font-bold text-sora-dark leading-tight">Design is the process of removing noise until only execution remains.</h2>
+                        <div class="space-y-6 text-sora-muted text-lg font-light leading-relaxed">
+                            <p>
+                                We believe that true premium design does not shout. It sits calmly, trusting in its proportions, structure, and spacing. In a world full of clutter and frantic blinking elements, a clean container stands out as the ultimate sophistication.
+                            </p>
+                            <p>
+                                Whether crafting corporate landing frameworks or mapping visual personal portfolios, we treat every layout like a physical architectural grid. We define boundaries, align typographic paths, and respect the natural flow of content.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-4 lg:border-l lg:border-sora-gray lg:pl-12 space-y-12">
+                        <div>
+                            <p class="text-5xl font-display font-bold text-sora-dark">04</p>
+                            <p class="text-xs uppercase tracking-widest text-sora-muted mt-2">Design Awards</p>
+                        </div>
+                        <div>
+                            <p class="text-5xl font-display font-bold text-sora-dark">100%</p>
+                            <p class="text-xs uppercase tracking-widest text-sora-muted mt-2">Bespoke Codebase</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-contact" class="page-view">
+            <div class="py-16 max-w-7xl mx-auto px-6 md:px-12">
+                <div class="grid lg:grid-cols-12 gap-12">
+                    <div class="lg:col-span-5 space-y-8">
+                        <div class="space-y-4">
+                            <h2 class="text-3xl sm:text-4xl font-display font-bold text-sora-dark">Start a Conversation</h2>
+                            <p class="text-sora-muted font-light leading-relaxed">We work selectively with clients who share our commitment to architectural balance and pristine aesthetics.</p>
+                        </div>
+                        
+                        <div class="space-y-4 text-sm">
+                            <p class="text-sora-muted">General Inquiries: <span class="text-sora-dark font-semibold">studio@soradesign.co</span></p>
+                            <p class="text-sora-muted">Creative Direction: <span class="text-sora-dark font-semibold">@sora.studio</span></p>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 border border-sora-gray p-8 bg-white/50 backdrop-blur-sm">
+                        <h3 class="text-xl font-display font-bold uppercase tracking-widest text-sora-dark mb-8">Inquiry Registry</h3>
+                        <form id="sora-form" class="space-y-8" onsubmit="handleFormSubmit(event)">
+                            <div class="border-b border-sora-gray pb-4">
+                                <label class="block text-xs uppercase tracking-widest text-sora-muted mb-2">My Name Is</label>
+                                <input type="text" required class="w-full bg-transparent text-sora-dark font-display text-lg focus:outline-none placeholder-gray-400" placeholder="Your Name">
+                            </div>
+                            <div class="border-b border-sora-gray pb-4">
+                                <label class="block text-xs uppercase tracking-widest text-sora-muted mb-2">Reach Me At</label>
+                                <input type="email" required class="w-full bg-transparent text-sora-dark font-display text-lg focus:outline-none placeholder-gray-400" placeholder="Your Email Address">
+                            </div>
+                            <div class="border-b border-sora-gray pb-4">
+                                <label class="block text-xs uppercase tracking-widest text-sora-muted mb-2">Project Vision Description</label>
+                                <textarea rows="3" required class="w-full bg-transparent text-sora-dark font-light focus:outline-none placeholder-gray-400" placeholder="A short brief of what you want to construct together..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-4 bg-sora-dark hover:bg-sora-muted text-white text-xs font-bold uppercase tracking-widest transition-all">
+                                Send Inquiry
+                            </button>
+                        </form>
+                        <div id="success-message" class="hidden mt-6 p-4 bg-sora-dark text-white flex items-center gap-3">
+                            <i class="fa-solid fa-arrow-right"></i>
+                            <span class="text-xs uppercase tracking-widest font-semibold">Inquiry logged. We will align with you soon.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-sora-gray py-12 bg-sora-bg">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
+            <span class="font-display font-bold text-lg text-sora-dark tracking-wider">SORA.</span>
+            <div class="flex gap-8 text-xs font-semibold uppercase tracking-widest text-sora-muted">
+                <a href="#" onclick="navigateTo('manifesto')" class="hover:text-sora-dark">Axioms</a>
+                <a href="#" onclick="navigateTo('work')" class="hover:text-sora-dark">Collections</a>
+            </div>
+            <p class="text-xs text-sora-muted">&copy; 2026 Sora Studio. Built by Solo Architect agency models.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.templateId = 'template3';
+    </script>
+    <script src="../shared/template-router.js"></script>
+    <script>
+        // Clean inquiry trigger
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('sora-form');
+            const successMsg = document.getElementById('success-message');
+            
+            form.reset();
+            successMsg.classList.remove('hidden');
+            
+            setTimeout(() => {
+                successMsg.classList.add('hidden');
+            }, 6000);
+        }
+
+        // Initialize state on first run
+        window.onload = function() {
+            navigateTo('home');
+        };
+    </script>
+</body>
+</html>

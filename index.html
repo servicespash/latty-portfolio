@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // Gracefully handle environments (like sandboxed iframes or test runners) where
+      // third-party scripts or extensions attempt to override window.fetch,
+      // preventing crashes due to read-only getters.
+      (function() {
+        try {
+          var originalFetch = window.fetch;
+          var currentFetch = originalFetch;
+          
+          function setupGetterSetter(obj, prop) {
+            var desc = Object.getOwnPropertyDescriptor(obj, prop);
+            if (!desc || desc.configurable) {
+              Object.defineProperty(obj, prop, {
+                get: function() {
+                  return currentFetch;
+                },
+                set: function(val) {
+                  currentFetch = val || originalFetch;
+                },
+                configurable: true,
+                enumerable: true
+              });
+              return true;
+            }
+            return false;
+          }
+
+          // Try defining on window directly first
+          var success = setupGetterSetter(window, 'fetch');
+          
+          // If not successful or to be safe, also try Window.prototype
+          if (typeof Window !== 'undefined' && Window.prototype) {
+            setupGetterSetter(Window.prototype, 'fetch');
+          }
+        } catch (e) {
+          console.warn("Window fetch override guard active:", e);
+        }
+      })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="YOUR_GSC_VERIFICATION_CODE_HERE" />
+    <meta name="description" content="Cymatic Study is an institutional sovereign infrastructure, educational platform, and showcase of creative portfolios detailing cymatic research, research papers, and responsive design systems." />
+    <meta name="keywords" content="Cymatic Study, Cymatic Hub, Sovereign Infrastructure, Cymatic Research, Creative Portfolio, Responsive Templates, Scientific Art, Frequency Studies" />
+    <title>Cymatic Study | Institutional Sovereign Infrastructure</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://cymatichub.xyz/#organization",
+          "name": "Cymatic Study",
+          "url": "https://cymatichub.xyz",
+          "logo": "https://cymatichub.xyz/apple-touch-icon.png",
+          "description": "Institutional sovereign infrastructure, cymatic study research platform, and showcase of creative responsive systems."
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://cymatichub.xyz/#website",
+          "name": "Cymatic Study | Institutional Sovereign Infrastructure",
+          "url": "https://cymatichub.xyz",
+          "description": "Exploration of cymatic science, institutional branding, and responsive high-performance digital templates."
+        }
+      ]
+    }
+    </script>
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <link rel="preload" href="data:application/octet-stream;base64,aW1wb3J0IHsgU3RyaWN0TW9kZSB9IGZyb20gJ3JlYWN0JzsKaW1wb3J0IHsgY3JlYXRlUm9vdCB9IGZyb20gJ3JlYWN0LWRvbS9jbGllbnQnOwppbXBvcnQgeyBIZWxtZXRQcm92aWRlciB9IGZyb20gJ3JlYWN0LWhlbG1ldC1hc3luYyc7CmltcG9ydCAnLi9pbmRleC5jc3MnOwppbXBvcnQgQXBwIGZyb20gJy4vQXBwJzsKaW1wb3J0IHsgRXJyb3JCb3VuZGFyeSB9IGZyb20gJy4vY29tcG9uZW50cy9FcnJvckJvdW5kYXJ5JzsKCmNvbnN0IHJvb3RFbGVtZW50ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3Jvb3QnKTsKaWYgKCFyb290RWxlbWVudCkgdGhyb3cgbmV3IEVycm9yKCJDWU1BVElDX1JPT1RfTk9UX0ZPVU5EIik7CgpjcmVhdGVSb290KHJvb3RFbGVtZW50KS5yZW5kZXIoCiAgPFN0cmljdE1vZGU+CiAgICA8RXJyb3JCb3VuZGFyeT4KICAgICAgPEhlbG1ldFByb3ZpZGVyPgogICAgICAgIDxBcHAgLz4KICAgICAgPC9IZWxtZXRQcm92aWRlcj4KICAgIDwvRXJyb3JCb3VuZGFyeT4KICA8L1N0cmljdE1vZGU+LAopOwoKLy8gUmVnaXN0ZXIgc2VydmljZSB3b3JrZXIgZm9yIFBXQSBzdXBwb3J0IHdpdGggbGlmZWN5Y2xlIG1hbmFnZW1lbnQKaWYgKCdzZXJ2aWNlV29ya2VyJyBpbiBuYXZpZ2F0b3IpIHsKICB3aW5kb3cuYWRkRXZlbnRMaXN0ZW5lcignbG9hZCcsICgpID0+IHsKICAgIG5hdmlnYXRvci5zZXJ2aWNlV29ya2VyLnJlZ2lzdGVyKCcvc3cuanMnKS50aGVuKHJlZ2lzdHJhdGlvbiA9PiB7CiAgICAgIGNvbnNvbGUubG9nKCdTVyByZWdpc3RlcmVkOiAnLCByZWdpc3RyYXRpb24pOwogICAgICAKICAgICAgLy8gQ2hlY2sgZm9yIHVwZGF0ZXMKICAgICAgcmVnaXN0cmF0aW9uLm9udXBkYXRlZm91bmQgPSAoKSA9PiB7CiAgICAgICAgY29uc3QgaW5zdGFsbGluZ1dvcmtlciA9IHJlZ2lzdHJhdGlvbi5pbnN0YWxsaW5nOwogICAgICAgIGlmIChpbnN0YWxsaW5nV29ya2VyKSB7CiAgICAgICAgICBpbnN0YWxsaW5nV29ya2VyLm9uc3RhdGVjaGFuZ2UgPSAoKSA9PiB7CiAgICAgICAgICAgIGlmIChpbnN0YWxsaW5nV29ya2VyLnN0YXRlID09PSAnaW5zdGFsbGVkJykgewogICAgICAgICAgICAgIGlmIChuYXZpZ2F0b3Iuc2VydmljZVdvcmtlci5jb250cm9sbGVyKSB7CiAgICAgICAgICAgICAgICBjb25zb2xlLmxvZygnTmV3IGNvbnRlbnQgaXMgYXZhaWxhYmxlOyBwbGVhc2UgcmVmcmVzaC4nKTsKICAgICAgICAgICAgICB9IGVsc2UgewogICAgICAgICAgICAgICAgY29uc29sZS5sb2coJ0NvbnRlbnQgaXMgY2FjaGVkIGZvciBvZmZsaW5lIHVzZS4nKTsKICAgICAgICAgICAgICB9CiAgICAgICAgICAgIH0KICAgICAgICAgIH07CiAgICAgICAgfQogICAgICB9OwogICAgfSkuY2F0Y2gocmVnaXN0cmF0aW9uRXJyb3IgPT4gewogICAgICBjb25zb2xlLmxvZygnU1cgcmVnaXN0cmF0aW9uIGZhaWxlZDogJywgcmVnaXN0cmF0aW9uRXJyb3IpOwogICAgfSk7CiAgfSk7Cn0K" as="script" type="module" />
+    <meta name="theme-color" content="#050505" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    
+    <style>
+      body { 
+        margin: 0; 
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-CZHbMCpx.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/rolldown-runtime-W-g5d7YK.js">
+    <link rel="modulepreload" crossorigin href="/assets/vendor-DS9xk1p2.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-CvlWDtyb.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

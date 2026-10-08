@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hope Rise Foundation is a non-profit organization empowering communities through clean water systems, local classrooms, and medical assistance kits.">
+    <meta name="keywords" content="Hope Rise Foundation, Non Profit Organization, Community Empowerment, Clean Water Wells, Local Classrooms, Mobile Medical Clinics, Accountability First">
+    <title>Hope Rise | Empowering Communities, Restoring Hope</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://cymatichub.xyz/template/template4/#organization",
+          "name": "Hope Rise Foundation",
+          "url": "https://cymatichub.xyz/template/template4",
+          "logo": "https://cymatichub.xyz/media/photo4.png",
+          "description": "Transparency-first non-profit organization deploying sustainable community-led projects."
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://cymatichub.xyz/template/template4/#website",
+          "name": "Hope Rise | Non-Profit Foundation",
+          "url": "https://cymatichub.xyz/template/template4",
+          "description": "Empowering global communities and restoring sustainable hope through clean water, learning, and clinic systems."
+        }
+      ]
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;450;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Fraunces', 'serif'],
+                    },
+                    colors: {
+                        hope: {
+                            bg: '#FDFBF7', // Warm Oatmeal White
+                            forest: '#1B4332', // Deep Organic Green
+                            accent: '#D97706', // Warm Amber
+                            softBg: '#F4EFE6',
+                            muted: '#5F6C5B',
+                            charcoal: '#2D312E'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .page-view {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+        .page-view.active {
+            display: block;
+            opacity: 1;
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-hope-bg text-hope-charcoal antialiased font-sans flex flex-col min-h-screen">
+
+    <header class="fixed top-0 left-0 w-full z-50 bg-hope-bg/90 backdrop-blur-md border-b border-hope-softBg">
+        <div class="max-w-7xl mx-auto px-6 h-20 grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center gap-4">
+            <div class="flex items-center justify-start overflow-hidden">
+                <a href="#" onclick="navigateTo('home')" class="flex items-center gap-3 shrink-0">
+                    <div class="w-10 h-10 rounded-full bg-hope-forest flex items-center justify-center shadow-md">
+                        <i class="fa-solid fa-hands-holding-child text-white text-lg"></i>
+                    </div>
+                    <div class="flex flex-col hidden sm:flex">
+                        <span class="text-hope-forest font-serif font-bold text-lg leading-none tracking-tight">Hope Rise</span>
+                        <span class="text-hope-accent font-semibold text-[10px] tracking-widest uppercase">FOUNDATION</span>
+                    </div>
+                </a>
+            </div>
+            
+            <nav class="hidden md:flex items-center justify-center gap-6 lg:gap-8">
+                <button onclick="navigateTo('home')" aria-label="Go to Home section" class="nav-link text-hope-muted hover:text-hope-forest transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-home">Home</button>
+                <button onclick="navigateTo('campaigns')" aria-label="Go to campaigns section" class="nav-link text-hope-muted hover:text-hope-forest transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-campaigns">Campaigns</button>
+                <button onclick="navigateTo('story')" aria-label="Go to Our Story section" class="nav-link text-hope-muted hover:text-hope-forest transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-story">Our Story</button>
+                <button onclick="navigateTo('contact')" aria-label="Go to Get Involved section" class="nav-link text-hope-muted hover:text-hope-forest transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-contact">Involve</button>
+            </nav>
+
+            <div class="flex items-center justify-end gap-2 sm:gap-4">
+                <button onclick="navigateTo('contact')" aria-label="Make a Donation" class="hidden sm:inline-flex items-center justify-center px-4 lg:px-6 h-10 lg:h-11 text-xs lg:text-sm font-bold text-white bg-hope-forest hover:bg-opacity-95 rounded-full transition-all duration-300 shadow-md whitespace-nowrap">
+                    Donate Now
+                </button>
+                <button onclick="toggleMobileMenu()" aria-label="Toggle Mobile Menu" class="md:hidden w-10 h-10 flex items-center justify-center text-hope-forest focus:outline-none">
+                    <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-hope-bg border-b border-hope-softBg px-6 py-6 space-y-4 shadow-lg">
+            <button onclick="navigateTo('home'); toggleMobileMenu();" aria-label="Go to Home" class="block w-full text-left py-2 text-base font-semibold text-hope-charcoal">Home</button>
+            <button onclick="navigateTo('campaigns'); toggleMobileMenu();" aria-label="Go to Campaigns" class="block w-full text-left py-2 text-base font-semibold text-hope-charcoal">Campaigns</button>
+            <button onclick="navigateTo('story'); toggleMobileMenu();" aria-label="Go to Our Story" class="block w-full text-left py-2 text-base font-semibold text-hope-charcoal">Our Story</button>
+            <button onclick="navigateTo('contact'); toggleMobileMenu();" aria-label="Go to Get Involved" class="block w-full text-left py-2 text-base font-semibold text-hope-charcoal">Involve</button>
+            <button onclick="navigateTo('contact'); toggleMobileMenu();" aria-label="Donate to Hope Rise" class="w-full text-center py-3 text-base font-bold text-white bg-hope-forest rounded-full shadow-md">Donate Now</button>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-20">
+
+        <section id="page-home" class="page-view active">
+            <div class="relative py-16 lg:py-28 overflow-hidden bg-gradient-to-b from-hope-softBg/40 to-hope-bg">
+                <div class="max-w-7xl mx-auto px-6 relative z-10">
+                    <div class="grid lg:grid-cols-12 gap-12 items-center">
+                        <div class="lg:col-span-7 space-y-8 text-left">
+                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-hope-forest/10 border border-hope-forest/20 text-hope-forest font-bold text-xs uppercase tracking-wider">
+                                Transparency-First Non-Profit
+                            </span>
+                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-hope-forest leading-[1.15]">
+                                Action that heals.<br><span class="text-hope-accent">Hope that builds.</span>
+                            </h1>
+                            <p class="text-hope-muted text-lg leading-relaxed max-w-xl">
+                                We partner directly with grassroots community leaders to structure water systems, provide health kits, and fund localized education efforts across regions in need.
+                            </p>
+                            <div class="flex flex-wrap gap-4">
+                                <button onclick="navigateTo('contact')" class="px-8 py-4 bg-hope-forest hover:bg-opacity-95 text-white font-bold rounded-full transition-all shadow-lg shadow-hope-forest/15">
+                                    Support Our Work
+                                </button>
+                                <button onclick="navigateTo('campaigns')" class="px-8 py-4 bg-white hover:bg-hope-softBg/20 text-hope-forest font-bold rounded-full border border-hope-softBg transition-all">
+                                    Current Campaigns
+                                </button>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-5">
+                            <div class="relative rounded-[2rem] overflow-hidden shadow-xl border-8 border-white bg-white">
+                                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80" alt="Empowered Communities" class="w-full h-[400px] object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-20 bg-white border-y border-hope-softBg">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                        <h2 class="text-3xl font-serif font-bold text-hope-forest">Direct Intervention Architecture</h2>
+                        <p class="text-hope-muted">We ensure 100% accountability on where every dollar reaches.</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <article class="p-8 rounded-2xl bg-hope-bg border border-hope-softBg">
+                            <div class="w-12 h-12 rounded-full bg-hope-forest/10 flex items-center justify-center text-hope-forest mb-6">
+                                <i class="fa-solid fa-droplet text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-hope-forest mb-3">Clean Water Access</h3>
+                            <p class="text-hope-muted">Building sustainable wells and clean-water processing kiosks inside remote settlements.</p>
+                        </article>
+                        <article class="p-8 rounded-2xl bg-hope-bg border border-hope-softBg">
+                            <div class="w-12 h-12 rounded-full bg-hope-forest/10 flex items-center justify-center text-hope-forest mb-6">
+                                <i class="fa-solid fa-laptop-code text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-hope-forest mb-3">Localized Learning</h3>
+                            <p class="text-hope-muted">Supplying communities with classrooms, offline resources, tablets, and mentorship modules.</p>
+                        </article>
+                        <article class="p-8 rounded-2xl bg-hope-bg border border-hope-softBg">
+                            <div class="w-12 h-12 rounded-full bg-hope-forest/10 flex items-center justify-center text-hope-forest mb-6">
+                                <i class="fa-solid fa-heart-pulse text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-hope-forest mb-3">Medical Assistance</h3>
+                            <p class="text-hope-muted">Deploying mobile clinical vans equipped with testing resources and direct pharmaceutical support.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-campaigns" class="page-view">
+            <div class="py-20 bg-hope-bg">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                        <h1 class="text-4xl font-serif font-bold text-hope-forest">Active Initiatives</h1>
+                        <p class="text-hope-muted">Join hands with us on physical, real-time programs requiring direct funding.</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-hope-softBg">
+                            <div class="h-64 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=800&q=80" alt="Well Construction" class="w-full h-full object-cover">
+                                <span class="absolute top-4 left-4 bg-hope-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Water</span>
+                            </div>
+                            <div class="p-8 space-y-6">
+                                <h3 class="text-2xl font-serif font-bold text-hope-forest">Safe Water Systems Project</h3>
+                                <p class="text-hope-muted">Building solar-powered water filtration tanks to reach 450+ families safely.</p>
+                                <div class="space-y-2">
+                                    <div class="flex justify-between text-xs text-hope-muted font-bold">
+                                        <span>75% Raised</span>
+                                        <span>$15,000 of $20,000 Goal</span>
+                                    </div>
+                                    <div class="w-full h-2.5 bg-hope-softBg rounded-full overflow-hidden">
+                                        <div class="h-full bg-hope-forest rounded-full" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-hope-softBg">
+                            <div class="h-64 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800&q=80" alt="Education Kits" class="w-full h-full object-cover">
+                                <span class="absolute top-4 left-4 bg-hope-accent text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Education</span>
+                            </div>
+                            <div class="p-8 space-y-6">
+                                <h3 class="text-2xl font-serif font-bold text-hope-forest">Scholastic Study Materials</h3>
+                                <p class="text-hope-muted">Procuring offline systems, curriculum books, and tools to upgrade school workspaces.</p>
+                                <div class="space-y-2">
+                                    <div class="flex justify-between text-xs text-hope-muted font-bold">
+                                        <span>40% Raised</span>
+                                        <span>$4,000 of $10,000 Goal</span>
+                                    </div>
+                                    <div class="w-full h-2.5 bg-hope-softBg rounded-full overflow-hidden">
+                                        <div class="h-full bg-hope-forest rounded-full" style="width: 40%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-story" class="page-view">
+            <div class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-6 text-left">
+                            <span class="text-hope-accent font-extrabold text-xs uppercase tracking-widest block">Rooted in Resilience</span>
+                            <h2 class="text-4xl font-serif font-bold text-hope-forest">The Origin of Hope Rise</h2>
+                            <p class="text-hope-muted leading-relaxed">
+                                Our organization was founded upon a core belief: that structural, permanent changes are more powerful than temporary fixes. True empowerment means providing communities with resources they can manage themselves.
+                            </p>
+                            <p class="text-hope-muted leading-relaxed">
+                                We operate locally out of Uganda with zero administrative waste. We employ local craftsmen to construct wells, build structures, and setup tech modules, ensuring every single project feeds the local economy first.
+                            </p>
+                        </div>
+                        <div class="relative">
+                            <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-lg">
+                                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80" alt="Humanitarian Team" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-contact" class="page-view">
+            <div class="py-20 bg-hope-softBg/30">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid lg:grid-cols-12 gap-12">
+                        <div class="lg:col-span-5 space-y-8">
+                            <div class="space-y-4">
+                                <h2 class="text-3xl font-serif font-bold text-hope-forest">Support Our Mission</h2>
+                                <p class="text-hope-muted">Whether through programmatic funding or volunteer skills, your hands can reshape communities. Register your interest below.</p>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-hope-forest">
+                                        <i class="fa-solid fa-map-pin"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-hope-forest">Location</h4>
+                                        <p class="text-sm text-hope-muted">Kampala office, Uganda</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-hope-forest">
+                                        <i class="fa-solid fa-envelope-open-text"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-hope-forest">Email</h4>
+                                        <p class="text-sm text-hope-muted">contact@hoperise.org</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-7 bg-white rounded-3xl p-8 border border-hope-softBg shadow-sm">
+                            <h3 class="text-2xl font-serif font-bold text-hope-forest mb-6">Involvement Registration</h3>
+                            <form id="hope-form" class="space-y-6" onsubmit="handleFormSubmit(event)">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-hope-muted mb-2">My Name</label>
+                                        <input type="text" required class="w-full bg-hope-bg px-4 py-3 rounded-xl border border-hope-softBg focus:outline-none focus:border-hope-forest">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-hope-muted mb-2">My Email</label>
+                                        <input type="email" required class="w-full bg-hope-bg px-4 py-3 rounded-xl border border-hope-softBg focus:outline-none focus:border-hope-forest">
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-hope-muted mb-2">Involvement Type</label>
+                                        <select class="w-full bg-hope-bg px-4 py-3 rounded-xl border border-hope-softBg focus:outline-none focus:border-hope-forest">
+                                            <option>Financial Support (Donation)</option>
+                                            <option>Volunteer Service</option>
+                                            <option>Project Partnership</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-hope-muted mb-2">Target Campaign Alignment</label>
+                                        <select class="w-full bg-hope-bg px-4 py-3 rounded-xl border border-hope-softBg focus:outline-none focus:border-hope-forest">
+                                            <option>Water Systems Project</option>
+                                            <option>Scholastic Study Materials</option>
+                                            <option>General Fund</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-hope-muted mb-2">Message or Custom Inquiry</label>
+                                    <textarea rows="4" required class="w-full bg-hope-bg px-4 py-3 rounded-xl border border-hope-softBg focus:outline-none focus:border-hope-forest"></textarea>
+                                </div>
+                                <button type="submit" class="w-full py-4 bg-hope-forest hover:bg-opacity-95 text-white font-bold rounded-xl transition-all shadow-md">
+                                    Submit Registration
+                                </button>
+                            </form>
+                            <div id="success-message" class="hidden mt-6 p-4 bg-emerald-50 text-emerald-800 rounded-xl border border-emerald-100 flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xl"></i>
+                                <span>Registration submitted! We appreciate your supportive path.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-hope-forest text-white py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-hope-forest font-bold text-lg">H</div>
+                    <span class="font-serif font-bold tracking-wider text-white">HOPE RISE</span>
+                </div>
+                <p class="text-xs text-gray-300">Sustainable progress, localized accountability.</p>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold text-white uppercase tracking-widest mb-4">Registry Address</h4>
+                <p class="text-xs text-gray-300 leading-relaxed">
+                    Hope Foundation House<br>
+                    Plot 14, Kampala, Uganda
+                </p>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold text-white uppercase tracking-widest mb-4">Action Paths</h4>
+                <ul class="space-y-2 text-xs text-gray-300">
+                    <li><button onclick="navigateTo('contact')" class="hover:text-white">Partner Sign-up</button></li>
+                    <li><button onclick="navigateTo('campaigns')" class="hover:text-white">Our Campaigns</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold text-white uppercase tracking-widest mb-4">Connect</h4>
+                <div class="flex gap-4">
+                    <a href="#" class="text-gray-300 hover:text-white"><i class="fa-brands fa-x-twitter text-lg"></i></a>
+                    <a href="#" class="text-gray-300 hover:text-white"><i class="fa-brands fa-instagram text-lg"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-emerald-900/50 text-center text-xs text-emerald-300">
+            &copy; 2026 Hope Rise Foundation. Designed under Solo Architect showcase models. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        window.templateId = 'template4';
+    </script>
+    <script src="../shared/template-router.js"></script>
+    <script>
+        // Form Submission logic
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('hope-form');
+            const successMsg = document.getElementById('success-message');
+            
+            form.reset();
+            successMsg.classList.remove('hidden');
+            
+            setTimeout(() => {
+                successMsg.classList.add('hidden');
+            }, 6000);
+        }
+
+        // Initialize state on first run
+        window.onload = function() {
+            navigateTo('home');
+        };
+    </script>
+</body>
+</html>

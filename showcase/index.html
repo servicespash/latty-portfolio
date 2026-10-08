@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cymatic Template Showcase | Interactive Previewer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@350;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth transitions for iframe sizing */
+        .preview-iframe {
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+</head>
+<body class="bg-[#090D1A] text-gray-100 font-sans h-screen flex flex-col overflow-hidden">
+
+    <!-- Top Navigation & Control Bar -->
+    <header class="h-16 bg-[#111625] border-b border-gray-800 flex items-center justify-between px-6 z-50">
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/10">
+                <span class="text-white font-bold text-sm">C</span>
+            </div>
+            <div>
+                <span class="text-white font-extrabold text-sm tracking-wider">CYMATIC <span class="text-blue-500">SHOWCASE</span></span>
+                <p class="text-[10px] text-gray-500 font-medium leading-none">Designed by Solo Architect</p>
+            </div>
+        </div>
+
+        <!-- Template Selector Switcher -->
+        <div class="flex items-center gap-2 bg-[#171E30] p-1.5 rounded-xl border border-gray-800">
+            <button onclick="switchTemplate('template1')" id="btn-template1" class="template-btn px-4 py-1.5 rounded-lg text-xs font-bold transition-all bg-blue-600 text-white">
+                1. School
+            </button>
+            <button onclick="switchTemplate('template2')" id="btn-template2" class="template-btn px-4 py-1.5 rounded-lg text-xs font-bold transition-all text-gray-400 hover:text-white">
+                2. Business
+            </button>
+            <button onclick="switchTemplate('template3')" id="btn-template3" class="template-btn px-4 py-1.5 rounded-lg text-xs font-bold transition-all text-gray-400 hover:text-white">
+                3. Creative
+            </button>
+            <button onclick="switchTemplate('template4')" id="btn-template4" class="template-btn px-4 py-1.5 rounded-lg text-xs font-bold transition-all text-gray-400 hover:text-white">
+                4. Non-Profit
+            </button>
+        </div>
+
+        <!-- Device Responsive Simulators -->
+        <div class="flex items-center gap-1.5 bg-[#171E30] p-1.5 rounded-xl border border-gray-800">
+            <button onclick="setDevice('desktop')" id="btn-desktop" class="device-btn w-9 h-9 rounded-lg flex items-center justify-center text-blue-500 bg-blue-500/10 transition-all" title="Desktop View">
+                <i class="fa-solid fa-desktop text-sm"></i>
+            </button>
+            <button onclick="setDevice('tablet')" id="btn-tablet" class="device-btn w-9 h-9 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all" title="Tablet View">
+                <i class="fa-solid fa-tablet-screen-button text-sm"></i>
+            </button>
+            <button onclick="setDevice('mobile')" id="btn-mobile" class="device-btn w-9 h-9 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all" title="Mobile View">
+                <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Live Simulator Workspace -->
+    <main class="flex-grow bg-[#090D1A] p-6 flex items-center justify-center relative overflow-hidden">
+        
+        <!-- Active Frame Container simulating real devices -->
+        <div id="device-wrapper" class="w-full h-full flex flex-col items-center justify-center transition-all duration-300">
+            
+            <div id="simulator-frame" class="w-full h-full bg-white rounded-2xl overflow-hidden shadow-2xl border border-gray-800/80 flex flex-col relative preview-iframe">
+                
+                <!-- Simulated Device Browser Bar (Only shows when shrunk) -->
+                <div id="browser-bar" class="hidden h-8 bg-gray-100 border-b border-gray-200 px-4 items-center gap-2">
+                    <div class="flex gap-1.5">
+                        <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-green-400"></span>
+                    </div>
+                    <div class="flex-grow max-w-md mx-auto bg-white rounded-md text-[10px] text-gray-400 py-0.5 px-3 text-center truncate border border-gray-200">
+                        cymatichub.xyz/<span id="simulated-url">template1</span>
+                    </div>
+                </div>
+
+                <!-- Live Template Iframe Frame -->
+                <iframe id="preview-frame" src="/showcase/t1/index.html" class="w-full h-full border-none bg-white"></iframe>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- JavaScript Simulator Controller -->
+    <script>
+        let currentTemplate = 'template1';
+        let currentDevice = 'desktop';
+
+        const templates = {
+            template1: { path: '/showcase/t1/index.html', title: 'Aether Academy (School)' },
+            template2: { path: '/showcase/t2/index.html', title: 'Apex Venture (Business)' },
+            template3: { path: '/showcase/t3/index.html', title: 'Sora Studio (Creative Portfolio)' },
+            template4: { path: '/showcase/t4/index.html', title: 'Hope Rise (Non-Profit)' }
+        };
+
+        function switchTemplate(templateId) {
+            currentTemplate = templateId;
+            const iframe = document.getElementById('preview-frame');
+            iframe.src = templates[templateId].path;
+
+            // Update Simulated URL bar
+            document.getElementById('simulated-url').innerText = templateId;
+
+            // Highlight Active Selector Button
+            document.querySelectorAll('.template-btn').forEach(btn => {
+                btn.className = "template-btn px-4 py-1.5 rounded-lg text-xs font-bold transition-all text-gray-400 hover:text-white";
+            });
+            document.getElementById(`btn-${templateId}`).className = "template-btn px-4 py-1.5 rounded-lg text-xs font-bold transition-all bg-blue-600 text-white shadow-lg shadow-blue-600/20";
+        }
+
+        function setDevice(deviceType) {
+            currentDevice = deviceType;
+            const frame = document.getElementById('simulator-frame');
+            const browserBar = document.getElementById('browser-bar');
+            const wrapper = document.getElementById('device-wrapper');
+
+            // Style Active State
+            document.querySelectorAll('.device-btn').forEach(btn => {
+                btn.className = "device-btn w-9 h-9 rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-all";
+            });
+            document.getElementById(`btn-${deviceType}`).className = "device-btn w-9 h-9 rounded-lg flex items-center justify-center text-blue-500 bg-blue-500/10 transition-all";
+
+            if (deviceType === 'desktop') {
+                frame.style.width = '100%';
+                frame.style.height = '100%';
+                frame.classList.remove('rounded-3xl', 'border-8', 'border-gray-800');
+                browserBar.classList.add('hidden');
+                browserBar.classList.remove('flex');
+            } else if (deviceType === 'tablet') {
+                frame.style.width = '768px';
+                frame.style.height = '1024px';
+                frame.classList.add('rounded-3xl', 'border-8', 'border-gray-800');
+                browserBar.classList.remove('hidden');
+                browserBar.classList.add('flex');
+            } else if (deviceType === 'mobile') {
+                frame.style.width = '375px';
+                frame.style.height = '812px';
+                frame.classList.add('rounded-3xl', 'border-8', 'border-gray-800');
+                browserBar.classList.remove('hidden');
+                browserBar.classList.add('flex');
+            }
+        }
+    </script>
+</body>
+</html>

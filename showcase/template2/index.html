@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Apex Venture is a leading executive advisory and capital strategy firm. We partner with elite enterprises to structure scalable architecture and accelerate venture growth.">
+    <meta name="keywords" content="Apex Venture, Executive Advisory, Capital Strategy, Venture Growth, Enterprise Architecture, Corporate Finance, Portfolio Management">
+    <title>Apex Venture | Executive Advisory & Strategy</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://cymatichub.xyz/template/template2/#organization",
+          "name": "Apex Venture",
+          "url": "https://cymatichub.xyz/template/template2",
+          "logo": "https://cymatichub.xyz/media/photo2.png",
+          "description": "Executive advisory and capital strategy firm assisting enterprises with structural scaling and venture capitalization."
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://cymatichub.xyz/template/template2/#website",
+          "name": "Apex Venture | Strategy & Capital Advisory",
+          "url": "https://cymatichub.xyz/template/template2",
+          "description": "Accelerating corporate enterprise growth through refined capital structuring and advisory competencies."
+        }
+      ]
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        apex: {
+                            bg: '#050811',
+                            card: '#0D1321',
+                            accent: '#10B981', // Emerald accent
+                            slate: '#1E293B',
+                            textMuted: '#94A3B8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .page-view {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+        .page-view.active {
+            display: block;
+            opacity: 1;
+        }
+        .gradient-glow {
+            background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.15) 0%, transparent 60%);
+        }
+        .border-gradient:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-apex-bg text-gray-100 antialiased font-sans flex flex-col min-h-screen">
+
+    <header class="fixed top-0 left-0 w-full z-50 bg-apex-bg/90 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center gap-4">
+            <div class="flex items-center justify-start overflow-hidden">
+                <a href="#" onclick="navigateTo('home')" class="flex items-center gap-3 shrink-0">
+                    <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+                        <i class="fa-solid fa-chart-line text-white text-sm"></i>
+                    </div>
+                    <span class="text-white font-extrabold text-lg tracking-wider hidden sm:block">APEX<span class="text-emerald-500">VENTURE</span></span>
+                </a>
+            </div>
+            
+            <nav class="hidden md:flex items-center justify-center gap-6 lg:gap-8">
+                <button onclick="navigateTo('home')" aria-label="Go to Home section" class="nav-link text-apex-textMuted hover:text-white transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-home">Home</button>
+                <button onclick="navigateTo('services')" aria-label="Go to Services section" class="nav-link text-apex-textMuted hover:text-white transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-services">Services</button>
+                <button onclick="navigateTo('cases')" aria-label="Go to Case Studies section" class="nav-link text-apex-textMuted hover:text-white transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-cases">Case Studies</button>
+                <button onclick="navigateTo('contact')" aria-label="Go to Contact section" class="nav-link text-apex-textMuted hover:text-white transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-contact">Contact</button>
+            </nav>
+
+            <div class="flex items-center justify-end gap-2 sm:gap-4">
+                <button onclick="navigateTo('contact')" aria-label="Partner With Us and Schedule Briefing" class="hidden sm:inline-flex items-center justify-center px-4 lg:px-5 h-10 lg:h-11 text-xs lg:text-sm font-bold text-apex-bg bg-emerald-500 hover:bg-emerald-400 rounded-xl transition-all duration-300 shadow-lg shadow-emerald-500/20 whitespace-nowrap">
+                    Partner With Us
+                </button>
+                <button onclick="toggleMobileMenu()" aria-label="Toggle Navigation Menu" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-300 focus:outline-none">
+                    <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-apex-card border-b border-white/5 px-6 py-6 space-y-4 shadow-2xl">
+            <button onclick="navigateTo('home'); toggleMobileMenu();" aria-label="Go to Home" class="block w-full text-left py-2 text-base font-semibold text-gray-300 hover:text-white">Home</button>
+            <button onclick="navigateTo('services'); toggleMobileMenu();" aria-label="Go to Services" class="block w-full text-left py-2 text-base font-semibold text-gray-300 hover:text-white">Services</button>
+            <button onclick="navigateTo('cases'); toggleMobileMenu();" aria-label="Go to Case Studies" class="block w-full text-left py-2 text-base font-semibold text-gray-300 hover:text-white">Case Studies</button>
+            <button onclick="navigateTo('contact'); toggleMobileMenu();" aria-label="Go to Contact" class="block w-full text-left py-2 text-base font-semibold text-gray-300 hover:text-white">Contact</button>
+            <button onclick="navigateTo('contact'); toggleMobileMenu();" aria-label="Partner with Apex Venture" class="w-full text-center py-3 text-base font-bold text-apex-bg bg-emerald-500 rounded-xl shadow-md">Partner With Us</button>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-20">
+
+        <section id="page-home" class="page-view active relative">
+            <div class="absolute inset-0 gradient-glow z-0 pointer-events-none"></div>
+            
+            <div class="relative py-20 lg:pt-32 lg:pb-24 z-10">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid lg:grid-cols-12 gap-12 items-center">
+                        <div class="lg:col-span-7 space-y-8 text-left">
+                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold text-xs uppercase tracking-wider">
+                                Global Capital & Strategy Advisors
+                            </span>
+                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
+                                Accelerate Your <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">Enterprise Growth</span>.
+                            </h1>
+                            <p class="text-apex-textMuted text-lg leading-relaxed max-w-xl">
+                                We partner with leading corporations and high-growth ventures to structure scalable architecture, scale operational workflows, and deploy capital efficiently.
+                            </p>
+                            <div class="flex flex-wrap gap-4">
+                                <button onclick="navigateTo('services')" class="px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-apex-bg font-bold rounded-xl transition-all shadow-lg shadow-emerald-500/10">
+                                    Our Services
+                                </button>
+                                <button onclick="navigateTo('contact')" class="px-8 py-4 bg-apex-card hover:bg-apex-slate text-white font-bold rounded-xl border border-white/5 transition-all">
+                                    Schedule Briefing
+                                </button>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-5">
+                            <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-apex-card p-2">
+                                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" alt="Corporate Briefing" class="w-full h-[400px] object-cover rounded-xl opacity-90">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-12 border-y border-white/5 bg-apex-card/30">
+                <div class="max-w-7xl mx-auto px-6">
+                    <p class="text-center text-xs uppercase tracking-widest text-apex-textMuted mb-6 font-semibold">Trusted by industry-defining institutions</p>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center opacity-65">
+                        <span class="text-white font-mono font-bold text-lg tracking-widest">VOLTA</span>
+                        <span class="text-white font-mono font-bold text-lg tracking-widest">NEXUS</span>
+                        <span class="text-white font-mono font-bold text-lg tracking-widest">AETHER</span>
+                        <span class="text-white font-mono font-bold text-lg tracking-widest">KRYPTON</span>
+                        <span class="text-white font-mono font-bold text-lg tracking-widest">VERTEX</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-services" class="page-view">
+            <div class="py-20 bg-apex-bg">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                        <h1 class="text-4xl font-extrabold text-white">Advisory Competencies</h1>
+                        <p class="text-apex-textMuted">Bespoke strategy designed to secure long-term market dominance.</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <article class="bg-apex-card p-8 rounded-2xl border border-white/5 border-gradient transition-all duration-300">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6">
+                                <i class="fa-solid fa-chart-pie text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Capital Structuring</h3>
+                            <p class="text-apex-textMuted leading-relaxed">Evaluating corporate assets, allocating venture investments, and optimizing financial efficiency for scaling operations.</p>
+                        </article>
+                        <article class="bg-apex-card p-8 rounded-2xl border border-white/5 border-gradient transition-all duration-300">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6">
+                                <i class="fa-solid fa-diagram-project text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Operational Scale</h3>
+                            <p class="text-apex-textMuted leading-relaxed">Streamlining corporate systems, reducing technical debt, and aligning decentralized departments under strong management playbooks.</p>
+                        </article>
+                        <article class="bg-apex-card p-8 rounded-2xl border border-white/5 border-gradient transition-all duration-300">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6">
+                                <i class="fa-solid fa-globe text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3">Market Entry Strategy</h3>
+                            <p class="text-apex-textMuted leading-relaxed">Analyzing competitive landscapes, mapping out target segments, and launching data-driven expansion initiatives globally.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-cases" class="page-view">
+            <div class="py-20 bg-apex-bg">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                        <h1 class="text-4xl font-extrabold text-white">Proven Outcomes</h1>
+                        <p class="text-apex-textMuted">Empirical evidence of our growth blueprints in action.</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="bg-apex-card rounded-2xl overflow-hidden border border-white/5">
+                            <div class="h-64 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="Financial Growth" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-8 space-y-4">
+                                <div class="text-emerald-400 text-xs font-bold uppercase tracking-widest">Fintech Expansion</div>
+                                <h3 class="text-2xl font-bold text-white">Nexus Capital Scaling</h3>
+                                <p class="text-apex-textMuted">We structured the complete operational scale-up framework for Nexus, raising their overall platform throughput by 140% in just two fiscal quarters.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-apex-card rounded-2xl overflow-hidden border border-white/5">
+                            <div class="h-64 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Enterprise Restructuring" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-8 space-y-4">
+                                <div class="text-emerald-400 text-xs font-bold uppercase tracking-widest">Agile Infrastructure</div>
+                                <h3 class="text-2xl font-bold text-white">Vertex Systems Overhaul</h3>
+                                <p class="text-apex-textMuted">Deploying visual workflow tracking and system registers, we restructured Vertex's engineering assets to achieve total cross-team synchronization.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-contact" class="page-view">
+            <div class="py-20 bg-apex-bg">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid lg:grid-cols-12 gap-12">
+                        <div class="lg:col-span-5 space-y-8">
+                            <div class="space-y-4">
+                                <h2 class="text-3xl font-bold text-white">Establish Contact</h2>
+                                <p class="text-apex-textMuted">Our executive board reviews custom partner requests weekly. Submit your strategic brief below.</p>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-apex-card border border-white/5 flex items-center justify-center text-emerald-400">
+                                        <i class="fa-solid fa-location-arrow"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-white">Headquarters</h4>
+                                        <p class="text-sm text-apex-textMuted">Financial District, Kampala</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-apex-card border border-white/5 flex items-center justify-center text-emerald-400">
+                                        <i class="fa-solid fa-shield-halved"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-white">Secure Phone</h4>
+                                        <p class="text-sm text-apex-textMuted">+256 (0) 414-998822</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-7 bg-apex-card rounded-3xl p-8 border border-white/5">
+                            <h3 class="text-2xl font-bold text-white mb-6">Strategic Request Form</h3>
+                            <form id="contact-form" class="space-y-6" onsubmit="handleFormSubmit(event)">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-450 mb-2">Full Name</label>
+                                        <input type="text" required class="w-full bg-apex-bg px-4 py-3 rounded-xl border border-white/10 focus:outline-none focus:border-emerald-500 text-white">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-450 mb-2">Corporate Email</label>
+                                        <input type="email" required class="w-full bg-apex-bg px-4 py-3 rounded-xl border border-white/10 focus:outline-none focus:border-emerald-500 text-white">
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-450 mb-2">Organization</label>
+                                        <input type="text" required class="w-full bg-apex-bg px-4 py-3 rounded-xl border border-white/10 focus:outline-none focus:border-emerald-500 text-white">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-450 mb-2">Advisory Service Required</label>
+                                        <select class="w-full bg-apex-bg px-4 py-3 rounded-xl border border-white/10 focus:outline-none focus:border-emerald-500 text-white">
+                                            <option>Capital Structuring</option>
+                                            <option>Operational Scaling</option>
+                                            <option>Market Entry Advisory</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-450 mb-2">Growth Objectives Description</label>
+                                    <textarea rows="4" required class="w-full bg-apex-bg px-4 py-3 rounded-xl border border-white/10 focus:outline-none focus:border-emerald-500 text-white"></textarea>
+                                </div>
+                                <button type="submit" class="w-full py-4 bg-emerald-500 hover:bg-emerald-400 text-apex-bg font-bold rounded-xl transition-all shadow-md">
+                                    Submit Request
+                                </button>
+                            </form>
+                            <div id="success-message" class="hidden mt-6 p-4 bg-emerald-950/50 text-emerald-400 rounded-xl border border-emerald-500/20 flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xl"></i>
+                                <span>Brief submitted. An advisor will contact you securely in 24 hours.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-apex-card text-apex-textMuted py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-emerald-500 flex items-center justify-center text-apex-bg font-bold text-lg">A</div>
+                    <span class="font-bold tracking-wider text-white">APEX VENTURE</span>
+                </div>
+                <p class="text-xs">Precision execution across global markets.</p>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold text-white uppercase tracking-widest mb-4">Location</h4>
+                <p class="text-xs leading-relaxed">
+                    Financial Square Plaza<br>
+                    Level 12, Kampala, Uganda
+                </p>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold text-white uppercase tracking-widest mb-4">Inquiries</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><button onclick="navigateTo('contact')" class="hover:text-white">Partner Program</button></li>
+                    <li><button onclick="navigateTo('services')" class="hover:text-white">Competencies</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold text-white uppercase tracking-widest mb-4">Social</h4>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-white/5 text-center text-xs text-gray-600">
+            &copy; 2026 Apex Venture. All corporate rights reserved. Part of our multi-template agency suite.
+        </div>
+    </footer>
+
+    <script>
+        window.templateId = 'template2';
+    </script>
+    <script src="../shared/template-router.js"></script>
+    <script>
+        // Form Submission Logic
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('contact-form');
+            const successMsg = document.getElementById('success-message');
+            
+            form.reset();
+            successMsg.classList.remove('hidden');
+            
+            setTimeout(() => {
+                successMsg.classList.add('hidden');
+            }, 6000);
+        }
+
+        // Initialize state on first run
+        window.onload = function() {
+            navigateTo('home');
+        };
+    </script>
+</body>
+</html>

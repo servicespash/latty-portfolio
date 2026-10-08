@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aether Academy combines elite academic rigors with real-world exploration. Nurturing future leaders through certified STEM, Classics, and Humanities pathways.">
+    <meta name="keywords" content="Aether Academy, Private School, Elite Academy, Advanced STEM, Humanities, Prep School, University Placement, Leader Cultivation, Dr Evelyn Vance">
+    <title>Aether Academy | Shaping Tomorrow's Leaders</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://cymatichub.xyz/template/template1/#organization",
+          "name": "Aether Academy",
+          "url": "https://cymatichub.xyz/template/template1",
+          "logo": "https://cymatichub.xyz/media/photo3.png",
+          "description": "Elite private prep academy combining top-tier STEM, Humanities, and leadership growth pipelines."
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://cymatichub.xyz/template/template1/#website",
+          "name": "Aether Academy | Elite Private Education",
+          "url": "https://cymatichub.xyz/template/template1",
+          "description": "Nurturing tomorrow's global leaders through robust educational pathways, high-fidelity labs, and customized curriculum structures."
+        }
+      ]
+    }
+    </script>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        academy: {
+                            navy: '#0B132B',
+                            slate: '#1C2541',
+                            teal: '#48CAE4',
+                            gold: '#D4AF37',
+                            light: '#F8F9FA'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .page-view {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+        .page-view.active {
+            display: block;
+            opacity: 1;
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #48CAE4 0%, #0077B6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="template-academy bg-academy-light text-academy-navy antialiased font-sans flex flex-col min-h-screen">
+
+    <!-- Global Navigation Header -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-20 grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center gap-4">
+            <!-- Brand Logo -->
+            <div class="flex items-center justify-start overflow-hidden">
+                <a href="#" onclick="navigateTo('home')" class="flex items-center gap-3 group shrink-0">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-academy-navy to-academy-slate flex items-center justify-center shadow-md">
+                        <span class="text-white font-serif font-bold text-xl">Æ</span>
+                    </div>
+                    <div class="flex flex-col hidden sm:flex">
+                        <span class="text-academy-navy font-extrabold text-lg tracking-wider leading-none">ÆTHER</span>
+                        <span class="text-academy-teal font-semibold text-xs tracking-widest uppercase">ACADEMY</span>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Desktop Dynamic Navigation Links -->
+            <nav class="hidden md:flex items-center justify-center gap-6 lg:gap-8">
+                <button onclick="navigateTo('home')" aria-label="Navigate to Home section" class="nav-link text-academy-navy/80 hover:text-academy-navy transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-home">Home</button>
+                <button onclick="navigateTo('programs')" aria-label="Navigate to Programs section" class="nav-link text-academy-navy/80 hover:text-academy-navy transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-programs">Programs</button>
+                <button onclick="navigateTo('origin')" aria-label="Navigate to Our Origin section" class="nav-link text-academy-navy/80 hover:text-academy-navy transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-origin">Our Origin</button>
+                <button onclick="navigateTo('contact')" aria-label="Navigate to Contact section" class="nav-link text-academy-navy/80 hover:text-academy-navy transition-colors text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap" id="nav-contact">Contact</button>
+            </nav>
+
+            <!-- Call To Action Button -->
+            <div class="flex items-center justify-end gap-2 sm:gap-4">
+                <button onclick="navigateTo('contact')" aria-label="Apply Online Now" class="hidden sm:inline-flex items-center justify-center px-4 lg:px-6 h-10 lg:h-11 text-xs lg:text-sm font-bold text-white bg-academy-navy hover:bg-academy-slate rounded-xl transition-all duration-300 shadow-lg shadow-academy-navy/20 whitespace-nowrap">
+                    Apply Now
+                </button>
+                <!-- Mobile Navigation Button -->
+                <button onclick="toggleMobileMenu()" aria-label="Toggle Mobile Menu" class="md:hidden w-10 h-10 flex items-center justify-center text-academy-navy focus:outline-none">
+                    <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dynamic Navigation Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 px-6 py-6 space-y-4 shadow-lg">
+            <button onclick="navigateTo('home'); toggleMobileMenu();" aria-label="Go to Home" class="block w-full text-left py-2 text-base font-semibold text-academy-navy">Home</button>
+            <button onclick="navigateTo('programs'); toggleMobileMenu();" aria-label="Go to Programs" class="block w-full text-left py-2 text-base font-semibold text-academy-navy">Programs</button>
+            <button onclick="navigateTo('origin'); toggleMobileMenu();" aria-label="Go to Our Origin" class="block w-full text-left py-2 text-base font-semibold text-academy-navy">Our Origin</button>
+            <button onclick="navigateTo('contact'); toggleMobileMenu();" aria-label="Go to Contact" class="block w-full text-left py-2 text-base font-semibold text-academy-navy">Contact</button>
+            <button onclick="navigateTo('contact'); toggleMobileMenu();" aria-label="Submit Online Application" class="w-full text-center py-3 text-base font-bold text-white bg-academy-teal rounded-xl shadow-md">Apply Now</button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINERS (Dynamic Page Views) -->
+    <main class="flex-grow pt-20">
+
+        <!-- PAGE 1: HOME -->
+        <section id="page-home" class="page-view active">
+            <!-- Hero Showcase -->
+            <div class="relative py-20 lg:py-32 overflow-hidden bg-gradient-to-b from-blue-50/50 to-white">
+                <div class="max-w-7xl mx-auto px-6 relative z-10">
+                    <div class="grid lg:grid-cols-12 gap-12 items-center">
+                        <div class="lg:col-span-7 space-y-8 text-left">
+                            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-academy-teal/10 border border-academy-teal/20 text-academy-teal font-bold text-xs uppercase tracking-wider">
+                                Now Enrolling for Fall Semester
+                            </span>
+                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-semibold text-academy-navy leading-[1.1]">
+                                Cultivating Minds, <br><span class="text-gradient font-bold">Inspiring Leadership</span>.
+                            </h1>
+                            <p class="text-gray-600 text-lg leading-relaxed max-w-xl">
+                                At Aether Academy, we combine world-class academic rigors with dynamic, real-world exploration. Our mission is to prepare scholars to step into the world with confidence, intellect, and character.
+                            </p>
+                            <div class="flex flex-wrap gap-4">
+                                <button onclick="navigateTo('programs')" class="px-8 py-4 bg-academy-navy hover:bg-academy-slate text-white font-bold rounded-xl transition-all shadow-lg shadow-academy-navy/20">
+                                    Explore Programs
+                                </button>
+                                <button onclick="navigateTo('origin')" class="px-8 py-4 bg-white hover:bg-gray-50 text-academy-navy font-bold rounded-xl border border-gray-200 transition-all">
+                                    Discover Our Origin
+                                </button>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-5">
+                            <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
+                                <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80" alt="Academy Campus" class="w-full h-[400px] object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fast Stats Section -->
+            <div class="py-12 bg-academy-navy text-white">
+                <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div>
+                        <p class="text-4xl font-extrabold text-academy-teal">1:8</p>
+                        <p class="text-xs uppercase tracking-widest text-gray-400 mt-2">Faculty Ratio</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl font-extrabold text-academy-teal">98%</p>
+                        <p class="text-xs uppercase tracking-widest text-gray-400 mt-2">University Placement</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl font-extrabold text-academy-teal">24+</p>
+                        <p class="text-xs uppercase tracking-widest text-gray-400 mt-2">Elite Electives</p>
+                    </div>
+                    <div>
+                        <p class="text-4xl font-extrabold text-academy-teal">$4.2M</p>
+                        <p class="text-xs uppercase tracking-widest text-gray-400 mt-2">Scholarship Grants</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Highlights -->
+            <div class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                        <h2 class="text-3xl font-serif font-bold text-academy-navy">The Pillars of an Aether Education</h2>
+                        <p class="text-gray-500">We nurture intellectual curiosity alongside deep individual character development.</p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <article class="p-8 rounded-2xl bg-academy-light border border-gray-100 hover:shadow-xl transition-all">
+                            <div class="w-12 h-12 rounded-xl bg-academy-teal/10 flex items-center justify-center text-academy-teal mb-6">
+                                <i class="fa-solid fa-graduation-cap text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Academic Eminence</h3>
+                            <p class="text-gray-600">A rigorous, globally-recognized curriculum taught by certified instructors who are experts in their fields.</p>
+                        </article>
+                        <article class="p-8 rounded-2xl bg-academy-light border border-gray-100 hover:shadow-xl transition-all">
+                            <div class="w-12 h-12 rounded-xl bg-academy-teal/10 flex items-center justify-center text-academy-teal mb-6">
+                                <i class="fa-solid fa-brain text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Holistic Growth</h3>
+                            <p class="text-gray-600">Integrating emotional intelligence, collaborative communication, and artistic pursuits into weekly life.</p>
+                        </article>
+                        <article class="p-8 rounded-2xl bg-academy-light border border-gray-100 hover:shadow-xl transition-all">
+                            <div class="w-12 h-12 rounded-xl bg-academy-teal/10 flex items-center justify-center text-academy-teal mb-6">
+                                <i class="fa-solid fa-earth-americas text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3">Global Stewardship</h3>
+                            <p class="text-gray-600">Active engagement in community projects, international excursions, and global policy competitions.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 2: PROGRAMS -->
+        <section id="page-programs" class="page-view">
+            <div class="py-20 bg-academy-light">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                        <h1 class="text-4xl font-serif font-bold text-academy-navy">Academic Pathways</h1>
+                        <p class="text-gray-600">Choose a path that inspires your genius and elevates your capability.</p>
+                    </div>
+
+                    <!-- Program Grid -->
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <!-- Card 1 -->
+                        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all">
+                            <div class="h-64 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1507537290456-4f899c5c4f1a?auto=format&fit=crop&w=800&q=80" alt="STEM" class="w-full h-full object-cover">
+                                <span class="absolute top-4 left-4 bg-academy-navy text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded">Grades 9-12</span>
+                            </div>
+                            <div class="p-8 space-y-4">
+                                <h3 class="text-2xl font-serif font-bold text-academy-navy">Advanced STEM & Innovation</h3>
+                                <p class="text-gray-600">Unlocking computational thinking, advanced mathematics, physics, and laboratory experimentation in modern custom labs.</p>
+                                <div class="flex items-center gap-4 text-sm text-gray-500">
+                                    <span><i class="fa-regular fa-clock mr-2"></i>Full-Time</span>
+                                    <span><i class="fa-solid fa-flask mr-2"></i>Lab-Centered</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-xl transition-all">
+                            <div class="h-64 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80" alt="Humanities" class="w-full h-full object-cover">
+                                <span class="absolute top-4 left-4 bg-academy-navy text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded">Grades 9-12</span>
+                            </div>
+                            <div class="p-8 space-y-4">
+                                <h3 class="text-2xl font-serif font-bold text-academy-navy">Humanities, Classics & Law</h3>
+                                <p class="text-gray-600">Developing rich skills in historical analysis, philosophical debate, logic, rhetoric, and international legal studies.</p>
+                                <div class="flex items-center gap-4 text-sm text-gray-500">
+                                    <span><i class="fa-regular fa-clock mr-2"></i>Full-Time</span>
+                                    <span><i class="fa-solid fa-scale-balanced mr-2"></i>Debate-Focus</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 3: ORIGIN (ABOUT) -->
+        <section id="page-origin" class="page-view">
+            <div class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-6">
+                            <span class="text-academy-teal font-extrabold text-xs uppercase tracking-widest">Our Founding Story</span>
+                            <h2 class="text-4xl font-serif font-bold text-academy-navy">Built on Academic Integrity and Discovery.</h2>
+                            <p class="text-gray-600 leading-relaxed">
+                                Founded with the vision to restore intellectual rigor to prep school education, Aether Academy was built to be a sanctuary for true intellectual pursuit. We believe that learning shouldn't be passive; it should be active, adventurous, and structured.
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                Our campus features custom-built libraries, high-fidelity laboratories, and creative studios. Everything we build is designed to inspire our scholars to create work they are proud to stand behind.
+                            </p>
+                            
+                            <!-- Leadership/Founders Card -->
+                            <div class="pt-6 border-t border-gray-150 flex items-center gap-4">
+                                <div class="w-14 h-14 rounded-full bg-gray-200 overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Headmaster" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-academy-navy text-lg">Dr. Evelyn Vance</h4>
+                                    <p class="text-sm text-gray-500">Head of Academy, Oxon.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-lg">
+                                <img src="https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=800&q=80" alt="Campus Library" class="w-full h-full object-cover">
+                            </div>
+                            <div class="absolute -bottom-6 -left-6 bg-academy-navy text-white p-6 rounded-2xl shadow-xl max-w-xs">
+                                <p class="text-sm italic">"Education is not the filling of a bucket, but the lighting of a fire."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 4: CONTACT / ADMISSIONS -->
+        <section id="page-contact" class="page-view">
+            <div class="py-20 bg-academy-light">
+                <div class="max-w-7xl mx-auto px-6">
+                    <div class="grid lg:grid-cols-12 gap-12">
+                        <!-- Left Info -->
+                        <div class="lg:col-span-5 space-y-8">
+                            <div class="space-y-4">
+                                <h2 class="text-3xl font-serif font-bold text-academy-navy">Get In Touch</h2>
+                                <p class="text-gray-600">Have questions about admissions, tours, or scholarship options? Fill out our application form or reach out directly.</p>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-white shadow-sm flex items-center justify-center text-academy-teal">
+                                        <i class="fa-solid fa-map-location-dot"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-academy-navy">Address</h4>
+                                        <p class="text-sm text-gray-500">12 Aether Way, Hillside Campus</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-white shadow-sm flex items-center justify-center text-academy-teal">
+                                        <i class="fa-solid fa-phone"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-academy-navy">Phone</h4>
+                                        <p class="text-sm text-gray-500">+1 (555) 019-2834</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-white shadow-sm flex items-center justify-center text-academy-teal">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-academy-navy">Email</h4>
+                                        <p class="text-sm text-gray-500">admissions@aetheracademy.edu</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Admission Inquiry Form -->
+                        <div class="lg:col-span-7 bg-white rounded-3xl p-8 border border-gray-150 shadow-sm">
+                            <h3 class="text-2xl font-serif font-bold text-academy-navy mb-6">Admissions Inquiry</h3>
+                            <form id="inquiry-form" class="space-y-6" onsubmit="handleFormSubmit(event)">
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-600 mb-2">Student First Name</label>
+                                        <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-academy-teal">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-600 mb-2">Student Last Name</label>
+                                        <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-academy-teal">
+                                    </div>
+                                </div>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-600 mb-2">Primary Contact Email</label>
+                                        <input type="email" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-academy-teal">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-semibold text-gray-600 mb-2">Target Grade Entry</label>
+                                        <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-academy-teal">
+                                            <option>Grade 9</option>
+                                            <option>Grade 10</option>
+                                            <option>Grade 11</option>
+                                            <option>Grade 12</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-600 mb-2">Additional Comments/Questions</label>
+                                    <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-academy-teal"></textarea>
+                                </div>
+                                <button type="submit" class="w-full py-4 bg-academy-navy hover:bg-academy-slate text-white font-bold rounded-xl transition-all shadow-md">
+                                    Submit Application Inquiry
+                                </button>
+                            </form>
+                            <!-- Success Feedback Element -->
+                            <div id="success-message" class="hidden mt-6 p-4 bg-emerald-50 text-emerald-800 rounded-xl border border-emerald-100 flex items-center gap-3">
+                                <i class="fa-solid fa-circle-check text-xl"></i>
+                                <span>Inquiry submitted successfully! Our Admissions team will email you shortly.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="bg-academy-navy text-white py-12 border-t border-academy-slate">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-academy-teal flex items-center justify-center text-academy-navy font-serif font-bold text-lg">Æ</div>
+                    <span class="font-serif font-bold tracking-wider text-white">ÆTHER ACADEMY</span>
+                </div>
+                <p class="text-xs text-gray-400">Where timeless wisdom meets modern discovery.</p>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold text-white uppercase tracking-widest mb-4">Campuses</h4>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                    Main Academic Hillside<br>
+                    Research Park Laboratories
+                </p>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold text-white uppercase tracking-widest mb-4">Admissions</h4>
+                <ul class="space-y-2 text-xs text-gray-400">
+                    <li><button onclick="navigateTo('contact')" class="hover:text-white">Apply Online</button></li>
+                    <li><button onclick="navigateTo('programs')" class="hover:text-white">Course Catalog</button></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-sm font-bold text-white uppercase tracking-widest mb-4">Connect</h4>
+                <div class="flex gap-4">
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-academy-slate text-center text-xs text-gray-500">
+            &copy; 2026 Aether Academy. This is a premium client portfolio template.
+        </div>
+    </footer>
+
+    <script>
+        window.templateId = 'template1';
+    </script>
+    <script src="../shared/template-router.js"></script>
+    <script>
+        // Custom Form Submission Response (No real alerts!)
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('inquiry-form');
+            const successMsg = document.getElementById('success-message');
+            
+            // Hide form input and show interactive success message
+            form.reset();
+            successMsg.classList.remove('hidden');
+            
+            setTimeout(() => {
+                successMsg.classList.add('hidden');
+            }, 6000);
+        }
+
+        // Initialize state on first run
+        window.onload = function() {
+            navigateTo('home');
+        };
+    </script>
+</body>
+</html>
